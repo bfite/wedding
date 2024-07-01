@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import Hero from "./Hero"
 import BrideAndGroom from './BrideAndGroom'
 import RSVP from './RSVP'
@@ -10,8 +9,6 @@ import 'doodle.css/doodle.css'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
-
 
   return (
     <>
