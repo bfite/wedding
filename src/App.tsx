@@ -6,7 +6,6 @@ import RSVPForm from "./Components/RSVPForm"
 
 function App() {  
 
-
   return (
     <Router>
       <Routes>
