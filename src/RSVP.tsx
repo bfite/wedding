@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import CustomModal from "./CustomModal";
 import useModal from "./hooks/useModal";
 
@@ -12,7 +13,7 @@ const RSVP = () => {
                     <p>
                         Please RSVP before September 12th.
                     </p>
-                    <button className="doodle-button bg-[#EFEFEF] doodle-border" onClick={toggle}>RSVP Here</button>
+                    <Link to="/RSVP"  className="doodle-button bg-[#EFEFEF] doodle-border">RSVP</Link>
                 </div>
                 <CustomModal show={isOpen} onHide={toggle}/>
 

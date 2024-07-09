@@ -31,53 +31,70 @@ const RSVPForm = () => {
     }
 
     return (
-    <form className="doodle">
-        {step === 1 && (
-        <div className="doodle">
-            <label>First Name</label>
-            <input
-                onChange={e => setFormData({...formData, firstName: e.target.value}) } 
-                value={formData.firstName}/>
-            <label>Last Name</label>
-            <input
-            onChange={e => setFormData({...formData, lastName: e.target.value}) } 
-            value={formData.lastName}/>
-        </div>
-        )}
-        {step === 2 && (
-            <Row>
-            <Form.Group as={Col}>
-                <label>food</label>
-                <Form.Select>
-                    <option>Select your food</option>
-                    <option value="1">Fite</option>
-                    <option value="2">Certain</option>
-                </Form.Select>
-            </Form.Group>
-            <Form.Group as={Col}>
-                <label>Number of People in Party</label>
-                <Form.Control type="number" size="sm"/>
-            </Form.Group>
-        </Row>
-        )}
+        <div className="flex items-center justify-center h-screen">
+            <form className="doodle">
+                {step === 1 && (
+                <div>
+                    <Row>
+                        <label>First Name</label>
+                        <input
+                            onChange={e => setFormData({...formData, firstName: e.target.value}) } 
+                            value={formData.firstName}/>
+                    </Row>
+                    <Row>
+                        <label>Last Name</label>
+                        <input
+                        onChange={e => setFormData({...formData, lastName: e.target.value}) } 
+                        value={formData.lastName}/>
+                    </Row>
+                    
+                </div>
+                )}
+                {step === 2 && (
+                    <div>
+                        <Row>
+                            <Form.Group as={Col}>
+                                <label>food</label>
+                                <Form.Select>
+                                    <option>Select your food</option>
+                                    <option value="1">Fite</option>
+                                    <option value="2">Certain</option>
+                                </Form.Select>
+                            </Form.Group>
+                        </Row>
+                        <Row>
+                            <Form.Group as={Col}>
+                                <label>Number of People in Party</label>
+                                <Form.Control type="number" size="sm"/>
+                            </Form.Group>
+                        </Row>
+                    </div>
+                )}
 
-        <div className="d-flex justify-content-between">
-            {step > 1 && (
-            <Button variant="secondary" onClick={handlePrevious}>
-                Previous
-            </Button>
-            )}
-            {step < 3 ? (
-            <Button variant="primary" onClick={handleNext}>
-                Next
-            </Button>
-            ) : (
-            <Button variant="primary" type="submit">
-                Submit
-            </Button>
-            )}
-        </div>
-    </form>
+                <div className="d-flex justify-content-between pt-10">
+                    {step > 1 && (
+                        <Row>
+                            <Button variant="secondary" onClick={handlePrevious}>
+                                Previous
+                            </Button>
+                        </Row>
+                    )}
+                    {step < 3 ? (
+                        <Row>
+                            <Button variant="primary" onClick={handleNext}>
+                                Next
+                            </Button>
+                        </Row>
+                    ) : (
+                        <Row>
+                            <Button variant="primary" type="submit">
+                                Submit
+                            </Button>
+                        </Row>
+                    )}
+                </div>
+            </form>
+    </div>
 )}
 
 export default RSVPForm
