@@ -7,7 +7,7 @@ import Countdown from './Countdown'
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'doodle.css/doodle.css'
-import './App.css'
+import '../public/App.css'
 
 
 function App() {  
