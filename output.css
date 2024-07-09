@@ -587,24 +587,12 @@ video {
   width: 100%;
 }
 
-.place-items-center {
-  place-items: center;
-}
-
-.items-end {
-  align-items: flex-end;
-}
-
 .items-center {
   align-items: center;
 }
 
 .justify-center {
   justify-content: center;
-}
-
-.justify-self-end {
-  justify-self: end;
 }
 
 .rounded-lg {
