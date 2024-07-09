@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: ["./src/**/*.{html,tsx}s"],
+  content: ["./src/**/*.{html,tsx}"],
   theme: {
     fontFamily: {
       'whimsical-script': ['Whimsical-script'],
