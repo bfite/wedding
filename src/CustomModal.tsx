@@ -1,10 +1,7 @@
 import { ReactNode } from "react";
 import Modal from "react-bootstrap/Modal"
 import Button from "react-bootstrap/Button"
-import Form from "react-bootstrap/Form";
-import { Row, Col } from "react-bootstrap";
 
-import supabase from "./utils/subabase"
 import RSVPForm from "./Components/RSVPForm";
 
 

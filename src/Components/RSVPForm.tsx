@@ -4,7 +4,6 @@ import supabase from "../utils/subabase";
 
 const RSVPForm = () => {
     const [step, setStep] = useState(1);
-    const [guest, setGuest] = useState();
 
     const [ formData, setFormData] = useState({
         firstName: "",
@@ -22,7 +21,7 @@ const RSVPForm = () => {
     }
 
     const handleVerifyGuest = async () => {
-        const { data: guest, error } = await supabase.from('guests')
+        const { data: guest } = await supabase.from('guests')
             .select().eq('first_name', formData.firstName).eq('last_name', formData.lastName)
         
         //@ts-ignore
