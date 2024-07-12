@@ -15,21 +15,30 @@ export type Database = {
           first_name: string | null
           id: number
           last_name: string | null
+          meal_selection: Database["public"]["Enums"]["Meal"]
+          notes: string | null
           party_id: number | null
+          rsvp: boolean | null
         }
         Insert: {
           created_at?: string
           first_name?: string | null
           id?: number
           last_name?: string | null
+          meal_selection?: Database["public"]["Enums"]["Meal"]
+          notes?: string | null
           party_id?: number | null
+          rsvp?: boolean | null
         }
         Update: {
           created_at?: string
           first_name?: string | null
           id?: number
           last_name?: string | null
+          meal_selection?: Database["public"]["Enums"]["Meal"]
+          notes?: string | null
           party_id?: number | null
+          rsvp?: boolean | null
         }
         Relationships: [
           {
@@ -44,23 +53,20 @@ export type Database = {
       party: {
         Row: {
           created_at: string
-          first_name: string | null
           id: number
-          last_name: string | null
+          party_name: string | null
           party_size: number | null
         }
         Insert: {
           created_at?: string
-          first_name?: string | null
           id?: number
-          last_name?: string | null
+          party_name?: string | null
           party_size?: number | null
         }
         Update: {
           created_at?: string
-          first_name?: string | null
           id?: number
-          last_name?: string | null
+          party_name?: string | null
           party_size?: number | null
         }
         Relationships: []
@@ -91,7 +97,7 @@ export type Database = {
       [_ in never]: never
     }
     Enums: {
-      [_ in never]: never
+      Meal: "Chicken" | "Pasta"
     }
     CompositeTypes: {
       [_ in never]: never

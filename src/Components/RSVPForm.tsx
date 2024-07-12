@@ -1,29 +1,71 @@
-import React, { useEffect, useState } from "react";
-import { Form, Row, Col, Button} from "react-bootstrap"
+import { useEffect, useState } from "react";
+import {  Row, Button} from "react-bootstrap"
 import supabase from "../utils/subabase";
-import { Database, Tables, Enums } from '../../types/supabase.ts'
+import { Database} from '../../types/supabase.ts'
+import { useNavigate } from "react-router-dom";
 
 
+// Define the interface for the guest selection state
+interface GuestSelection {
+    selected: boolean;
+    meal?: Database["public"]["Enums"]["Meal"];
+  }
 
 const RSVPForm = () => {
     const [step, setStep] = useState(1);
     const [guestId, setGuestId] = useState<number | null>( null);
     const [partyId, setPartyId] = useState<number | null>( null);
     const [partyList, setPartyList] = useState<Database['public']['Tables']['guests']['Row'][] | []>([]);
+    const [selectedGuests, setSelectedGuests] = useState<{ [key: number]: GuestSelection }>({});
+    const navigate = useNavigate();
 
     const [ formData, setFormData] = useState({
         firstName: "",
-        lastName: ""
+        lastName: "",
+        notes: ""
     });
 
     const handleNext = () => {
         if(step == 1) handleVerifyGuest()
-
+        if(step == 2) handleSaveRSVP() 
+        if(step == 3) handleSubmit()
         setStep(step + 1);
     }
 
     const handlePrevious = () => {
         setStep(step - 1);
+    }
+
+    const handleSubmit = async () => {
+        // Submit notes to db and redirect to homepage
+        const { error } = await supabase
+        .from('guests')
+        .update({ notes: formData.notes })
+        .eq('id', guestId)
+        
+        if(error) {
+            console.error('Error updating selections: ', error);
+        }
+
+        navigate('/');
+    }
+
+    const handleSaveRSVP = async () => {
+        var selections = getSelections()
+
+        const updates = selections.map(({guestId, selected, meal}) => ({
+            id: guestId,
+            rsvp: selected,
+            meal_selection: meal,
+        }));
+
+        const { error } = await supabase
+        .from('guests')
+        .upsert(updates, { onConflict: 'id'});
+
+        if(error) {
+            console.error('Error updating selections: ', error);
+        }
     }
 
     // useEffect to call retrieveParty whenever partyId changes
@@ -54,6 +96,7 @@ const RSVPForm = () => {
 
         if (partyId !== null) {
             retrieveParty();
+            console.log(guestId);
         }
     }, [partyId]); // useEffect dependency on partyId
 
@@ -84,15 +127,65 @@ const RSVPForm = () => {
         }
     };
 
-    const generateCheckboxList = () => {
-        return partyList.map((guest) => (
-          <div key={guest.id}>
-            <label>
-              <input type="checkbox" value={guest.id} />
-              {guest.first_name}
-            </label>
-          </div>
-        ));
+    const handleCheckboxChange = (guestId: number) => {
+        setSelectedGuests((prevSelectedGuests) => ({
+        ...prevSelectedGuests,
+        [guestId]: {
+            ...prevSelectedGuests[guestId],
+            selected: !prevSelectedGuests[guestId]?.selected,
+        },
+        }));
+    };
+
+    // Handle meal selection change
+    const handleMealChange = (guestId : number, meal: Database["public"]["Enums"]["Meal"]) => {
+        setSelectedGuests((prevSelectedGuests) => ({
+          ...prevSelectedGuests,
+          [guestId]: {
+            ...prevSelectedGuests[guestId],
+            meal,
+          },
+        }));
+      };
+
+    // Function to get the selections for all guests
+    const getSelections = () => {
+        const selections = Object.entries(selectedGuests).map(([guestId, { selected, meal }]) => ({
+        guestId,
+        selected,
+        meal,
+        }));
+        console.log(selections);
+        return selections;
+    };
+    
+
+    const generateCheckboxList = () => {   
+        return (
+            <div style={{ marginBottom: '10px' }}>
+              {partyList.map((guest) => (
+                <div key={guest.id} className="grid grid-cols-3 g-10 mb-10 h-10">
+                  <label>{guest.first_name}</label>
+                  <input
+                    type="checkbox"
+                    value={guest.id.toString()}
+                    onChange={() => handleCheckboxChange(guest.id)}
+                    checked={selectedGuests[guest.id]?.selected || false}
+                  />
+                  {selectedGuests[guest.id] && (
+                    <select style={{ gridColumn: '3 / span 1' }}
+                    value={selectedGuests[guest.id]?.meal || ''}
+                    onChange={(e) => handleMealChange(guest.id, e.target.value as  Database["public"]["Enums"]["Meal"] )}
+                    >
+                      <option value="">Select Meal</option>
+                      <option value="Chicken">Chicken</option>
+                      <option value="Pasta">Pasta</option>
+                    </select>
+                  )}
+                </div>
+              ))}
+            </div>
+          );
       };
 
     return (
@@ -122,6 +215,14 @@ const RSVPForm = () => {
                         </Row>
                     </div>
                 )}
+                {step === 3 && (
+                    <div>
+                        <Row>
+                            <label>Would you like to leave a message for Laura and Brandon?</label>
+                            <textarea onChange={e => setFormData({...formData, notes: e.target.value}) }  />
+                        </Row>
+                    </div>
+                )}
 
                 <div className="d-flex justify-content-between pt-10">
                     {step > 1 && (
@@ -131,19 +232,15 @@ const RSVPForm = () => {
                             </Button>
                         </Row>
                     )}
-                    {step < 3 ? (
-                        <Row>
+                    <Row>
+                        {step === 3 ? ( 
                             <Button variant="primary" onClick={handleNext}>
-                                Next
-                            </Button>
-                        </Row>
-                    ) : (
-                        <Row>
-                            <Button variant="primary" type="submit">
                                 Submit
-                            </Button>
-                        </Row>
-                    )}
+                            </Button>) : 
+                            (<Button variant="primary" onClick={handleNext}>
+                                Next
+                            </Button>)}
+                    </Row>
                 </div>
             </form>
     </div>
