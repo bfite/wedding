@@ -15,7 +15,7 @@ export type Database = {
           first_name: string | null
           id: number
           last_name: string | null
-          meal_selection: Database["public"]["Enums"]["Meal"]
+          meal_selection: Database["public"]["Enums"]["Meals"] | null
           notes: string | null
           party_id: number | null
           rsvp: boolean | null
@@ -25,7 +25,7 @@ export type Database = {
           first_name?: string | null
           id?: number
           last_name?: string | null
-          meal_selection?: Database["public"]["Enums"]["Meal"]
+          meal_selection?: Database["public"]["Enums"]["Meals"] | null
           notes?: string | null
           party_id?: number | null
           rsvp?: boolean | null
@@ -35,7 +35,7 @@ export type Database = {
           first_name?: string | null
           id?: number
           last_name?: string | null
-          meal_selection?: Database["public"]["Enums"]["Meal"]
+          meal_selection?: Database["public"]["Enums"]["Meals"] | null
           notes?: string | null
           party_id?: number | null
           rsvp?: boolean | null
@@ -49,6 +49,21 @@ export type Database = {
             referencedColumns: ["id"]
           },
         ]
+      }
+      meals: {
+        Row: {
+          id: number
+          meal_name: string | null
+        }
+        Insert: {
+          id?: number
+          meal_name?: string | null
+        }
+        Update: {
+          id?: number
+          meal_name?: string | null
+        }
+        Relationships: []
       }
       party: {
         Row: {
@@ -97,7 +112,12 @@ export type Database = {
       [_ in never]: never
     }
     Enums: {
-      Meal: "Chicken" | "Pasta"
+      Meals:
+        | "Main Buffet - Chicken and/or Salmon"
+        | "Vegetarian"
+        | "Vegan"
+        | "Kids - Pizza"
+        | "Kids - Chicken Tenders"
     }
     CompositeTypes: {
       [_ in never]: never

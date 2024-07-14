@@ -7,9 +7,11 @@ import { useNavigate } from "react-router-dom";
 
 // Define the interface for the guest selection state
 interface GuestSelection {
-    selected: boolean;
-    meal?: Database["public"]["Enums"]["Meal"];
+    selected: boolean | null;
+    meal?: Database["public"]["Enums"]["Meals"] | null;
   }
+
+  
 
 const RSVPForm = () => {
     const [step, setStep] = useState(1);
@@ -47,6 +49,8 @@ const RSVPForm = () => {
             console.error('Error updating selections: ', error);
         }
 
+        alert("RSVP Submitted. Thank you, we look forward to having you at our wedding!");
+
         navigate('/');
     }
 
@@ -66,6 +70,7 @@ const RSVPForm = () => {
         if(error) {
             console.error('Error updating selections: ', error);
         }
+
     }
 
     // useEffect to call retrieveParty whenever partyId changes
@@ -120,6 +125,8 @@ const RSVPForm = () => {
                 setPartyId(null);
                 setPartyList([]); // Reset partyList if no guest found
                 setStep(1);
+
+                alert("Guest not found, please check the spelling or try the name of someone else in your party!");
             }
         } catch (error) {
             console.error('Error verifying guest:', error);
@@ -138,7 +145,7 @@ const RSVPForm = () => {
     };
 
     // Handle meal selection change
-    const handleMealChange = (guestId : number, meal: Database["public"]["Enums"]["Meal"]) => {
+    const handleMealChange = (guestId : number, meal: Database["public"]["Enums"]["Meals"]) => {
         setSelectedGuests((prevSelectedGuests) => ({
           ...prevSelectedGuests,
           [guestId]: {
@@ -159,10 +166,20 @@ const RSVPForm = () => {
         return selections;
     };
     
+    useEffect(() => {
+        const initialSelections = partyList.reduce((acc, guest) => {
+          acc[guest.id] = {
+            selected: guest.rsvp,
+            meal: guest.meal_selection,
+          };
+          return acc;
+        }, {} as { [key: number]: GuestSelection });
+        setSelectedGuests(initialSelections);
+      }, [partyList]);
 
     const generateCheckboxList = () => {   
         return (
-            <div style={{ marginBottom: '10px' }}>
+            <div className="mb-10 p-10">
               {partyList.map((guest) => (
                 <div key={guest.id} className="grid grid-cols-3 g-10 mb-10 h-10">
                   <label>{guest.first_name}</label>
@@ -175,11 +192,14 @@ const RSVPForm = () => {
                   {selectedGuests[guest.id] && (
                     <select style={{ gridColumn: '3 / span 1' }}
                     value={selectedGuests[guest.id]?.meal || ''}
-                    onChange={(e) => handleMealChange(guest.id, e.target.value as  Database["public"]["Enums"]["Meal"] )}
+                    onChange={(e) => handleMealChange(guest.id, e.target.value as  Database["public"]["Enums"]["Meals"] )}
                     >
                       <option value="">Select Meal</option>
-                      <option value="Chicken">Chicken</option>
-                      <option value="Pasta">Pasta</option>
+                      <option value="Main Buffet - Chicken and/or Salmon">Main Buffet - Chicken and/or Salmon</option>
+                      <option value="Vegetarian">Vegetarian</option>
+                      <option value="Vegan">Vegan</option>
+                      <option value="Kids - Pizza">Kids - Pizza</option>
+                      <option value="Kids - Chicken Tenders">Kids - Chicken Tenders</option>
                     </select>
                   )}
                 </div>
@@ -197,7 +217,8 @@ const RSVPForm = () => {
                         <label>First Name</label>
                         <input
                             onChange={e => setFormData({...formData, firstName: e.target.value}) } 
-                            value={formData.firstName}/>
+                            value={formData.firstName}
+                        />
                     </Row>
                     <Row>
                         <label>Last Name</label>
@@ -216,7 +237,7 @@ const RSVPForm = () => {
                     </div>
                 )}
                 {step === 3 && (
-                    <div>
+                    <div className="p-10">
                         <Row>
                             <label>Would you like to leave a message for Laura and Brandon?</label>
                             <textarea onChange={e => setFormData({...formData, notes: e.target.value}) }  />
@@ -226,13 +247,13 @@ const RSVPForm = () => {
 
                 <div className="d-flex justify-content-between pt-10">
                     {step > 1 && (
-                        <Row>
+                        <Row className="p-10">
                             <Button variant="secondary" onClick={handlePrevious}>
                                 Previous
                             </Button>
                         </Row>
                     )}
-                    <Row>
+                    <Row className="p-10">
                         {step === 3 ? ( 
                             <Button variant="primary" onClick={handleNext}>
                                 Submit
