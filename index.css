@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family:"Abraham-Lincoln";
   line-height: 1.5;
   font-weight: 400;
 
@@ -18,6 +18,8 @@
 }
 
 a {
+  font-family:"Abraham-Lincoln";
+
   font-weight: 500;
   color: #646cff;
   text-decoration: inherit;
@@ -27,6 +29,7 @@ a:hover {
 }
 
 body {
+  font-family:"Abraham-Lincoln";
   margin: 0;
   display: flex;
   place-items: center;
@@ -124,3 +127,9 @@ body, html {
   margin: 5px;
 }
 
+@font-face {
+  font-family: 'Abraham Lincoln';
+  font-style: normal;
+  font-weight: normal;
+  src: url('../font/AbrahamLincoln.woff') format('woff');
+  }
