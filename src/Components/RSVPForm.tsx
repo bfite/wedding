@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import { Button} from "react-bootstrap"
+
 import supabase from "../utils/subabase";
 import { Database} from '../../types/supabase.ts'
 import { useNavigate } from "react-router-dom";
@@ -252,19 +254,19 @@ const RSVPForm = () => {
                 <div className="d-flex justify-content-between pt-10">
                     {step > 1 && (
                         <div className="row p-10">
-                            <button  onClick={handlePrevious}>
+                            <Button variant="primary"   onClick={handlePrevious}>
                                 Previous
-                            </button>
+                            </Button>
                         </div>
                     )}
                     <div className="row p-10">
                         {step === 3 ? ( 
-                            <button onClick={handleNext}>
+                            <Button variant="primary"  onClick={handleNext}>
                                 Submit
-                            </button>) : 
-                            (<button onClick={handleNext}>
+                            </Button>) : 
+                            (<Button variant="primary"  onClick={handleNext}>
                                 Next
-                            </button>)}
+                            </Button>)}
                     </div>
                 </div>
             </form>
