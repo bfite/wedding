@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import {  Row, Button} from "react-bootstrap"
 import supabase from "../utils/subabase";
 import { Database} from '../../types/supabase.ts'
 import { useNavigate } from "react-router-dom";
@@ -107,11 +106,16 @@ const RSVPForm = () => {
 
     const handleVerifyGuest = async () => {
         try {
-            const { data: guests } = await supabase
+            console.log(formData)
+
+            const { data: guests , error} = await supabase
                 .from('guests')
                 .select()
-                .eq('first_name', formData.firstName.toLowerCase())
-                .eq('last_name', formData.lastName.toLowerCase());
+                .ilike('first_name', formData.firstName.toLowerCase())
+                .ilike('last_name', formData.lastName.toLowerCase());
+
+            console.log(supabase)
+            console.log(error)
 
             if (guests != null && guests.length > 0) {
                 const guest:  Database['public']['Tables']['guests']['Row'] = guests[0];
@@ -182,7 +186,7 @@ const RSVPForm = () => {
             <div className="mb-10 p-10">
               {partyList.map((guest) => (
                 <div key={guest.id} className="grid grid-cols-3 g-10 mb-10 h-10">
-                  <label>{guest.first_name}</label>
+                  <label>{(guest.first_name?.charAt(0).toUpperCase() || "" ) + guest.first_name?.slice(1) || ""}</label>
                   <input
                     type="checkbox"
                     value={guest.id.toString()}
@@ -210,58 +214,58 @@ const RSVPForm = () => {
 
     return (
         <div className="flex items-center justify-center h-screen">
-            <form className="doodle">
+            <form className="doodle font-whimsical-script">
                 {step === 1 && (
                 <div>
-                    <Row>
-                        <label>First Name</label>
+                    <div className="row mb-5">
+                        <label className="mr-5 font-whimsical-script">First Name</label>
                         <input
                             onChange={e => setFormData({...formData, firstName: e.target.value}) } 
                             value={formData.firstName}
                         />
-                    </Row>
-                    <Row>
-                        <label>Last Name</label>
+                    </div>
+                    <div className="row">
+                        <label className="mr-5 font-whimsical-script">Last Name</label>
                         <input
                         onChange={e => setFormData({...formData, lastName: e.target.value}) } 
                         value={formData.lastName}/>
-                    </Row>
+                    </div>
                     
                 </div>
                 )}
                 {step === 2 && (
                     <div>
-                        <Row>
+                        <div className="row">
                             {generateCheckboxList() }
-                        </Row>
+                        </div>
                     </div>
                 )}
                 {step === 3 && (
                     <div className="p-10">
-                        <Row>
+                        <div className="row">
                             <label>Would you like to leave a message for Laura and Brandon?</label>
                             <textarea onChange={e => setFormData({...formData, notes: e.target.value}) }  />
-                        </Row>
+                        </div>
                     </div>
                 )}
 
                 <div className="d-flex justify-content-between pt-10">
                     {step > 1 && (
-                        <Row className="p-10">
-                            <Button variant="secondary" onClick={handlePrevious}>
+                        <div className="row p-10">
+                            <button  onClick={handlePrevious}>
                                 Previous
-                            </Button>
-                        </Row>
+                            </button>
+                        </div>
                     )}
-                    <Row className="p-10">
+                    <div className="row p-10">
                         {step === 3 ? ( 
-                            <Button variant="primary" onClick={handleNext}>
+                            <button onClick={handleNext}>
                                 Submit
-                            </Button>) : 
-                            (<Button variant="primary" onClick={handleNext}>
+                            </button>) : 
+                            (<button onClick={handleNext}>
                                 Next
-                            </Button>)}
-                    </Row>
+                            </button>)}
+                    </div>
                 </div>
             </form>
     </div>

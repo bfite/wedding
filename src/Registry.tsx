@@ -6,7 +6,7 @@ const Registry = () => {
                 <p>
                     We are Laura and Brandon and we are getting married.
                 </p>
-                <a href="https://www.honeyfund.com/site/fite-certain-10-12-2024">https://www.honeyfund.com/site/fite-certain-10-12-2024</a>
+                <a href="https://www.honeyfund.com/site/fite-certain-10-12-2024">Visit our Honeyfund Registry here!</a>
             </div>
         </div>
     )

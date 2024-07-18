@@ -4,7 +4,8 @@ export default {
   theme: {
     fontFamily: {
       'whimsical-script': ['Whimsical-script'],
-      'whimsical': ['Whimsical']
+      'whimsical': ['Whimsical'],
+      'abe': ['Abraham-Lincoln']
     },
     extend: {},
   },
