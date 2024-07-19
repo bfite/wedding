@@ -2,11 +2,13 @@ const Registry = () => {
     return (
         <div className="text-block doodle-border">
             <div>
-                <h2>Registry</h2>
+                <h1 className="font-whimsical">Registry</h1>
                 <p>
-                    We are Laura and Brandon and we are getting married.
+                    While your presence at our wedding is more than enough, if you wish to contribute to our honeymoon registry, please click the button below. Thank you!
                 </p>
-                <a href="https://www.honeyfund.com/site/fite-certain-10-12-2024">Visit our Honeyfund Registry here!</a>
+                <div className="p-10">
+                    <a href="https://www.honeyfund.com/site/fite-certain-10-12-2024" className="doodle-button bg-[#EFEFEF] doodle-border p-3 no-underline text-black font-bold">Visit here!</a>
+                </div>
             </div>
         </div>
     )

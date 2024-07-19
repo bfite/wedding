@@ -5,8 +5,6 @@ const Hero = () => {
             <h1 className="hero-header">Laura</h1>
             <h1 className="hero-header">&</h1>
             <h1 className="hero-header">Brandon</h1>
-                <button>rsvp</button>
-
             </div>
         </div>
     )

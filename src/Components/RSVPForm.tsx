@@ -185,10 +185,10 @@ const RSVPForm = () => {
 
     const generateCheckboxList = () => {   
         return (
-            <div className="mb-10 p-10">
+            <div className="">
               {partyList.map((guest) => (
-                <div key={guest.id} className="grid grid-cols-3 g-10 mb-10 h-10">
-                  <label>{(guest.first_name?.charAt(0).toUpperCase() || "" ) + guest.first_name?.slice(1) || ""}</label>
+                <div key={guest.id} className="grid grid-cols-4 mb-10 h-10">
+                  <label className="text-xl">{(guest.first_name?.charAt(0).toUpperCase() || "" ) + guest.first_name?.slice(1) || ""}</label>
                   <input
                     type="checkbox"
                     value={guest.id.toString()}
@@ -196,16 +196,17 @@ const RSVPForm = () => {
                     checked={selectedGuests[guest.id]?.selected || false}
                   />
                   {selectedGuests[guest.id] && (
-                    <select style={{ gridColumn: '3 / span 1' }}
-                    value={selectedGuests[guest.id]?.meal || ''}
-                    onChange={(e) => handleMealChange(guest.id, e.target.value as  Database["public"]["Enums"]["Meals"] )}
-                    >
-                      <option value="">Select Meal</option>
-                      <option value="Main Buffet - Chicken and/or Salmon">Main Buffet - Chicken and/or Salmon</option>
-                      <option value="Vegetarian">Vegetarian</option>
-                      <option value="Vegan">Vegan</option>
-                      <option value="Kids - Pizza">Kids - Pizza</option>
-                      <option value="Kids - Chicken Tenders">Kids - Chicken Tenders</option>
+                    <select 
+                        className="font-abe col-span-2"
+                        value={selectedGuests[guest.id]?.meal || ''}
+                        onChange={(e) => handleMealChange(guest.id, e.target.value as  Database["public"]["Enums"]["Meals"] )}
+                        >
+                        <option className="font-abe" value="" disabled>Select Meal</option>
+                        <option className="font-abe" value="Main Buffet - Chicken and/or Salmon">Main Buffet - Chicken and/or Salmon</option>
+                        <option className="font-abe" value="Vegetarian">Vegetarian</option>
+                        <option className="font-abe" value="Vegan">Vegan</option>
+                        <option className="font-abe" value="Kids - Pizza">Kids - Pizza</option>
+                        <option className="font-abe" value="Kids - Chicken Tenders">Kids - Chicken Tenders</option>
                     </select>
                   )}
                 </div>
@@ -222,6 +223,7 @@ const RSVPForm = () => {
                     <div className="row mb-5">
                         <label className="mr-5 font-whimsical-script">First Name</label>
                         <input
+                            className="font-abe"
                             onChange={e => setFormData({...formData, firstName: e.target.value}) } 
                             value={formData.firstName}
                         />
@@ -229,6 +231,7 @@ const RSVPForm = () => {
                     <div className="row">
                         <label className="mr-5 font-whimsical-script">Last Name</label>
                         <input
+                        className="font-abe"
                         onChange={e => setFormData({...formData, lastName: e.target.value}) } 
                         value={formData.lastName}/>
                     </div>
@@ -244,30 +247,26 @@ const RSVPForm = () => {
                 )}
                 {step === 3 && (
                     <div className="p-10">
-                        <div className="row">
+                        <div className="row text-xl">
                             <label>Would you like to leave a message for Laura and Brandon?</label>
-                            <textarea onChange={e => setFormData({...formData, notes: e.target.value}) }  />
+                            <textarea className="w-3/4 font-abe" onChange={e => setFormData({...formData, notes: e.target.value}) }  />
                         </div>
                     </div>
                 )}
 
-                <div className="d-flex justify-content-between pt-10">
+                <div className="row space-x-10 pt-10  ">
                     {step > 1 && (
-                        <div className="row p-10">
-                            <Button variant="primary"   onClick={handlePrevious}>
+                            <Button variant="primary" className="font-abe"  onClick={handlePrevious}>
                                 Previous
                             </Button>
-                        </div>
                     )}
-                    <div className="row p-10">
-                        {step === 3 ? ( 
-                            <Button variant="primary"  onClick={handleNext}>
-                                Submit
-                            </Button>) : 
-                            (<Button variant="primary"  onClick={handleNext}>
-                                Next
-                            </Button>)}
-                    </div>
+                    {step === 3 ? ( 
+                        <Button variant="primary" onClick={handleNext}>
+                            Submit
+                        </Button>) : 
+                        (<Button variant="primary"  onClick={handleNext}>
+                            Next
+                        </Button>)}
                 </div>
             </form>
     </div>

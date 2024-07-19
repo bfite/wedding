@@ -2,9 +2,9 @@ const BrideAndGroom = () => {
     return (
         <div className="text-block doodle-border">
             <div>
-                <h2>About the Bride and Groom</h2>
+                <h1 className="font-whimsical">About the Bride and Groom</h1>
                 <p>
-                    We are Laura and Brandon and we are getting married.
+                    Laura and Brandon met in their junior year of highschool. They have remained together ever since. 
                 </p>
             </div>
         </div>

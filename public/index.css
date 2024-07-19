@@ -128,8 +128,6 @@ body, html {
 }
 
 @font-face {
-  font-family: 'Abraham Lincoln';
-  font-style: normal;
-  font-weight: normal;
+  font-family: Abraham;
   src: url('../font/AbrahamLincoln.woff') format('woff');
   }
