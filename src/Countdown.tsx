@@ -42,8 +42,8 @@ const Countdown = memo(() => {
 
 
     return (
-    <div className="w-full px-1 md:px-4 text-block  doodle-border">
-      <div className="text-3xl font-head font-bold text-center mb-10 pt-10 text-gray-700 px-2">
+    <div className="text-block doodle-border">
+      <div className="text-3xl font-head font-bold text-center mb-10 pt-10 text-gray-700">
         <h4 className="mb-1 font-whimsical">Countdown</h4>
       </div>
 

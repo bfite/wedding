@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 const RSVP = () => {
 
     return (
-        <div className="doodle text-block doodle-border">
+        <div className="doodle text-block doodle-border pb-5">
             <div>
                 <h1 className="font-whimsical">RSVP</h1>
                 <></>
