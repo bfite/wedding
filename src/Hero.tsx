@@ -1,4 +1,4 @@
-const Hero = () => {
+ const Hero = () => {
     return (
         <div className="hero-image">
             <div className='hero-text text-2xl text-bold'>
