@@ -1,4 +1,5 @@
 import { memo, useEffect, useState } from "react";
+import bookImg from './assets/doodles/book.png'
 
 const EVENT_DATE = "October 12, 2024 16:00:00";
 const COUNTDOWN_DATE = new Date(EVENT_DATE).getTime();
@@ -43,7 +44,7 @@ const Countdown = memo(() => {
 
     return (
     <div className="relative text-block doodle-border">
-      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 translate-y-3/4 w-32 h-32"><img className="border-none" src="src/assets/doodles/book.png"/></div>
+      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 translate-y-3/4 w-32 h-32"><img className="border-none" src={bookImg}/></div>
 
       <div className="text-3xl font-head font-bold text-center mb-10 pt-10 text-gray-700">
         <h4 className="mb-1 font-whimsical">Countdown</h4>
