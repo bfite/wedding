@@ -283,16 +283,21 @@ const RSVPForm = () => {
 
 
             <div className="fixed left-0 bottom-0 w-full flex justify-around items-end">
-                <div className="hidden md:block"><img src={leafyStemImg}/></div>
-                <div><img src={curvyStem}/></div>
-                <div><img src={doubleFlower}/></div>
-                <div className="hidden md:block"><img src={doubleStem}/></div>
-                <div><img src={twoLittleDaisies}/></div>
-                <div className="hidden md:block"><img src={leafStemImg}/></div>
-                <div><img src={singleFlowerImg}/></div>
-                <div className="hidden md:block"><img src={stem}/></div>
-                <div className="hidden md:block"><img src={straightStem}/></div>
-                <div><img src={flowerBud}/></div>
+                <div className="-ml-20 hidden md:block"><img src={leafyStemImg}/></div>
+                <div className="-ml-20"><img src={curvyStem}/></div>
+                <div className="-ml-20"><img src={doubleFlower}/></div>
+                <div className="-ml-20 hidden md:block"><img src={doubleStem}/></div>
+                <div className="-ml-20  hidden md:block"><img src={twoLittleDaisies}/></div>
+                <div className="-ml-20 hidden md:block"><img src={leafyStemImg}/></div>
+                <div className="-ml-20"><img src={straightStem}/></div>
+                <div className="-ml-20  hidden md:block"><img src={doubleStem}/></div>
+                <div className="-ml-20  hidden md:block"><img src={leafStemImg}/></div>
+                <div className="-ml-20"><img src={stem}/></div>
+                <div className="-ml-20"><img src={curvyStem}/></div>
+                <div className="-ml-20 hidden md:block"><img src={stem}/></div>
+                <div className="-ml-20 hidden md:block"><img src={straightStem}/></div>
+                <div className="-ml-20"><img src={twoLittleDaisies}/></div>
+                <div className="-ml-20"><img src={flowerBud}/></div>
 
             </div>
         </div>
