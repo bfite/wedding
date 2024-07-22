@@ -282,19 +282,20 @@ const RSVPForm = () => {
             </form>
 
 
-        <div className="fixed left-0 bottom-0 w-full flex justify-around transform translate-y-1/4">
-            <div className="w-32 h-32 transform translate-y-10"><img className="border-none" src={leafyStemImg}/></div>
-            <div className="w-32 h-32 transform translate-y-10"><img className="border-none" src={curvyStem}/></div>
-            <div className="w-32 h-32 transform translate-y-1/4"><img className="border-none" src={doubleFlower}/></div>
-            <div className="w-32 h-32 transform translate-y-1/4"><img className="border-none" src={doubleStem}/></div>
-            <div className="w-32 h-32 "><img className="border-none" src={flowerBud}/></div>
-            <div className="w-32 h-32 transform translate-y-2"><img className="border-none" src={leafStemImg}/></div>
-            <div className="w-32 h-32 transform translate-y-1/4"><img className="border-none" src={singleFlowerImg}/></div>
-            <div className="w-32 h-32 transform translate-y-1/4"><img className="border-none" src={stem}/></div>
-            <div className="w-32 h-32"><img className="border-none" src={straightStem}/></div>
-            <div className="w-32 h-32 transform translate-y-1/4"><img className="border-none" src={twoLittleDaisies}/></div>
+            <div className="fixed left-0 bottom-0 w-full flex justify-around items-end">
+                <div className="hidden md:block"><img src={leafyStemImg}/></div>
+                <div><img src={curvyStem}/></div>
+                <div><img src={doubleFlower}/></div>
+                <div className="hidden md:block"><img src={doubleStem}/></div>
+                <div><img src={twoLittleDaisies}/></div>
+                <div className="hidden md:block"><img src={leafStemImg}/></div>
+                <div><img src={singleFlowerImg}/></div>
+                <div className="hidden md:block"><img src={stem}/></div>
+                <div className="hidden md:block"><img src={straightStem}/></div>
+                <div><img src={flowerBud}/></div>
+
+            </div>
         </div>
-    </div>
-)}
+    )}
 
 export default RSVPForm

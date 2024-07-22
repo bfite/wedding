@@ -667,6 +667,10 @@ video {
   display: grid;
 }
 
+.hidden {
+  display: none;
+}
+
 .h-10 {
   height: 2.5rem;
 }
@@ -779,6 +783,10 @@ video {
 
 .grid-cols-4 {
   grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.items-end {
+  align-items: flex-end;
 }
 
 .items-center {
@@ -1028,4 +1036,10 @@ body, html {
   font-family: Abraham;
 
   src: url('../font/AbrahamLincoln.woff') format('woff');
+}
+
+@media (min-width: 768px) {
+  .md\:block {
+    display: block;
+  }
 }
