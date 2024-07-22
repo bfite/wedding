@@ -5,6 +5,17 @@ import supabase from "../utils/subabase";
 import { Database} from '../../types/supabase.ts'
 import { useNavigate } from "react-router-dom";
 
+import leafyStemImg from '../assets/doodles/leafystem.png'
+import curvyStem from '../assets/doodles/curvystem.png'
+import doubleFlower from '../assets/doodles/doubleflower.png'
+import doubleStem from '../assets/doodles/doublestem.png'
+import flowerBud from '../assets/doodles/flowerbud.png'
+import leafStemImg from '../assets/doodles/leftstem.png'
+import singleFlowerImg from '../assets/doodles/singleflower.png'
+import stem from '../assets/doodles/stem.png'
+import straightStem from '../assets/doodles/straightstem.png'
+import twoLittleDaisies from '../assets/doodles/twolittledaisies.png'
+
 
 // Define the interface for the guest selection state
 interface GuestSelection {
@@ -269,6 +280,20 @@ const RSVPForm = () => {
                         </Button>)}
                 </div>
             </form>
+
+
+        <div className="fixed left-0 bottom-0 w-full flex justify-around transform translate-y-1/4">
+            <div className="w-32 h-32 transform translate-y-10"><img className="border-none" src={leafyStemImg}/></div>
+            <div className="w-32 h-32 transform translate-y-10"><img className="border-none" src={curvyStem}/></div>
+            <div className="w-32 h-32 transform translate-y-1/4"><img className="border-none" src={doubleFlower}/></div>
+            <div className="w-32 h-32 transform translate-y-1/4"><img className="border-none" src={doubleStem}/></div>
+            <div className="w-32 h-32 "><img className="border-none" src={flowerBud}/></div>
+            <div className="w-32 h-32 transform translate-y-2"><img className="border-none" src={leafStemImg}/></div>
+            <div className="w-32 h-32 transform translate-y-1/4"><img className="border-none" src={singleFlowerImg}/></div>
+            <div className="w-32 h-32 transform translate-y-1/4"><img className="border-none" src={stem}/></div>
+            <div className="w-32 h-32"><img className="border-none" src={straightStem}/></div>
+            <div className="w-32 h-32 transform translate-y-1/4"><img className="border-none" src={twoLittleDaisies}/></div>
+        </div>
     </div>
 )}
 
