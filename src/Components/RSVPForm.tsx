@@ -294,7 +294,7 @@ const RSVPForm = () => {
                 <div className="-ml-20  hidden md:block"><img src={leafStemImg}/></div>
                 <div className="-ml-20"><img src={stem}/></div>
                 <div className="-ml-20"><img src={curvyStem}/></div>
-                <div className="-ml-20 hidden md:block"><img src={stem}/></div>
+                <div className="-ml-20 hidden md:block"><img src={singleFlowerImg}/></div>
                 <div className="-ml-20 hidden md:block"><img src={straightStem}/></div>
                 <div className="-ml-20"><img src={twoLittleDaisies}/></div>
                 <div className="-ml-20"><img src={flowerBud}/></div>
