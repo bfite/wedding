@@ -91,6 +91,7 @@ button:focus-visible {
   height: 100%;
   width: 100%;
   background-color: #FDF7F1;
+  max-width: 1280px;
 
 }
 
