@@ -1,11 +1,11 @@
-import flyingplane from './assets/doodles/flyingplane.png'
+import flyingplane from './assets/doodles/flyingplanefulltail.png'
 import polaroid from './assets/doodles/polaroids.png'
 import camera from './assets/doodles/camera.png'
 
 const Registry = () => {
     return (
         <div className="relative text-block doodle-border z-10 flex justify-center items-center">
-            <div className="absolute left-1/4 transform inset-0 z-0 hidden md:block"><img className="h-full object-cover border-none" src={flyingplane}/></div>
+            <div className="absolute lg:left-1/4 transform lg:pl-0 md:pl-[100px] inset-0 z-0 hidden md:block"><img className="h-full object-cover border-none" src={flyingplane}/></div>
 
             <div className='flex flex-col items-center'>
                 <h1 className="font-whimsical">Registry</h1>
