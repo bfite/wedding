@@ -15,6 +15,7 @@ import singleFlowerImg from '../assets/doodles/singleflower.png'
 import stem from '../assets/doodles/stem.png'
 import straightStem from '../assets/doodles/straightstem.png'
 import twoLittleDaisies from '../assets/doodles/twolittledaisies.png'
+import flowerBottomBorder from '../assets/doodles/flowerBottomBordersmall.png'
 
 
 // Define the interface for the guest selection state
@@ -227,7 +228,8 @@ const RSVPForm = () => {
       };
 
     return (
-        <div className="flex items-center justify-center h-screen">
+        // <div className="bg-repeat-x " style={{backgroundImage: "url(" + flowerBottomBorder + ")"}}>
+        <div className="flex items-center justify-center h-screen z-100" >
             <form className="doodle font-whimsical-script">
                 {step === 1 && (
                 <div>
@@ -279,28 +281,15 @@ const RSVPForm = () => {
                             Next
                         </Button>)}
                 </div>
-            </form>
-
-
-            <div className="fixed left-0 bottom-0 w-full flex justify-around items-end">
-                <div className="-ml-20 hidden md:block"><img src={leafyStemImg}/></div>
-                <div className="-ml-20"><img src={curvyStem}/></div>
-                <div className="-ml-20"><img src={doubleFlower}/></div>
-                <div className="-ml-20 hidden md:block"><img src={doubleStem}/></div>
-                <div className="-ml-20  hidden md:block"><img src={twoLittleDaisies}/></div>
-                <div className="-ml-20 hidden md:block"><img src={leafyStemImg}/></div>
-                <div className="-ml-20"><img src={straightStem}/></div>
-                <div className="-ml-20  hidden md:block"><img src={doubleStem}/></div>
-                <div className="-ml-20  hidden md:block"><img src={leafStemImg}/></div>
-                <div className="-ml-20"><img src={stem}/></div>
-                <div className="-ml-20"><img src={curvyStem}/></div>
-                <div className="-ml-20 hidden md:block"><img src={singleFlowerImg}/></div>
-                <div className="-ml-20 hidden md:block"><img src={straightStem}/></div>
-                <div className="-ml-20"><img src={twoLittleDaisies}/></div>
-                <div className="-ml-20"><img src={flowerBud}/></div>
-
-            </div>
+            </form>  
+            
+            <div className="absolute bottom-0 "><img className="border-none" src={flowerBottomBorder}/></div>
+         
         </div>
+
+
+        // </div>
+        
     )}
 
 export default RSVPForm
