@@ -5,16 +5,6 @@ import supabase from "../utils/subabase";
 import { Database} from '../../types/supabase.ts'
 import { useNavigate } from "react-router-dom";
 
-import leafyStemImg from '../assets/doodles/leafystem.png'
-import curvyStem from '../assets/doodles/curvystem.png'
-import doubleFlower from '../assets/doodles/doubleflower.png'
-import doubleStem from '../assets/doodles/doublestem.png'
-import flowerBud from '../assets/doodles/flowerbud.png'
-import leafStemImg from '../assets/doodles/leftstem.png'
-import singleFlowerImg from '../assets/doodles/singleflower.png'
-import stem from '../assets/doodles/stem.png'
-import straightStem from '../assets/doodles/straightstem.png'
-import twoLittleDaisies from '../assets/doodles/twolittledaisies.png'
 import flowerBottomBorder from '../assets/doodles/flowerBottomBordersmall.png'
 
 
@@ -228,8 +218,8 @@ const RSVPForm = () => {
       };
 
     return (
-        // <div className="bg-repeat-x " style={{backgroundImage: "url(" + flowerBottomBorder + ")"}}>
-        <div className="flex items-center justify-center h-screen z-100" >
+        <div className="flex items-center justify-center h-screen z-100 bg-repeat-x bg-bottom h-screen" 
+        style={{backgroundImage: "url(" + flowerBottomBorder + ")"}} >
             <form className="doodle font-whimsical-script">
                 {step === 1 && (
                 <div>
@@ -281,14 +271,8 @@ const RSVPForm = () => {
                             Next
                         </Button>)}
                 </div>
-            </form>  
-            
-            <div className="absolute bottom-0 "><img className="border-none" src={flowerBottomBorder}/></div>
-         
+            </form>           
         </div>
-
-
-        // </div>
         
     )}
 
