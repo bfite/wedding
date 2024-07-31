@@ -6,6 +6,7 @@ import Location from "./Location";
 import RSVP from "./RSVP";
 import ThingsToDo from "./ThingsToDo";
 import Footer from "./Footer";
+import FAQ from "./FAQ";
 
 const Home = () => {
     return (
@@ -23,6 +24,8 @@ const Home = () => {
             <Location />
 
             <ThingsToDo />
+
+            <FAQ />
 
             <Footer />
         </>
