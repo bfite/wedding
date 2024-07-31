@@ -132,3 +132,31 @@ body, html {
   font-family: Abraham;
   src: url('../font/AbrahamLincoln.woff') format('woff');
   }
+
+
+  /* styles.css */
+
+.bg-desktop {
+  background-image: url('../src/assets/doodles/rsvp/background.png');
+  background-size: cover;
+  background-position: center;
+}
+
+.bg-mobile {
+  background-image: url('../src/assets/doodles/rsvp/background-mb.png');
+  background-size: cover;
+  background-position: center;
+}
+
+@media (max-width: 380px) {
+  .bg-responsive {
+    background-image: url('./assets/doodles/rsvp/background-mb.png');
+  }
+}
+
+@media (min-width: 381px) {
+  .bg-responsive {
+    background-image: url('./assets/doodles/rsvp/background.png');
+  }
+}
+
