@@ -981,12 +981,12 @@ body, html {
 }
 
 .hero-text {
-  text-align: center;
+  text-align: left;
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color:black;
+  bottom: 0%;
+  left: 0%;
+  color:#FDF7F1;
+  padding: 20px;
 }
 
 .hero-header {
