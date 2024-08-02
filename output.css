@@ -780,6 +780,10 @@ video {
   background-position: center;
 }
 
+.bg-no-repeat {
+  background-repeat: no-repeat;
+}
+
 .bg-repeat-x {
   background-repeat: repeat-x;
 }
